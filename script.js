@@ -1,50 +1,187 @@
 const questions = [
     {
-        question : "Bai Hoc Dau Tien",
-        image : "img/test1.png",
-        answers:[
-            { text: "Tich Phan", correct:false},
-            { text: "Nguyen Ham", correct:true},
-            { text: "Dao Ham", correct:false},
-            { text: "Vi Phan", correct:false},
-            
+        question: "Tích phân của hàm số f(x) = 2x từ 0 đến 2 là gì?",
+        answers: [
+            { text: "4", correct: true },
+            { text: "2", correct: false },
+            { text: "0", correct: false },
+            { text: "8", correct: false }
         ]
     },
     {
-        question : "Bai Hoc Dau Tien",
-        answers:[
-            { text: "Tich Phan", correct:false},
-            { text: "Nguyen Ham", correct:true},
-            { text: "Dao Ham", correct:false},
-            { text: "Vi Phan", correct:false},
-            
+        question: "Tích phân ∫ x^2 dx từ 1 đến 3 là bao nhiêu?",
+        answers: [
+            { text: "26/3", correct: false },
+            { text: "9", correct: false },
+            { text: "28/3", correct: true },
+            { text: "10", correct: false }
         ]
     },
     {
-        question : "Bai Hoc Dau Tien",
-        image : "img/test1.png",
-        answers:[
-            { text: "Tich Phan", correct:false},
-            { text: "Nguyen Ham", correct:true},
-            { text: "Dao Ham", correct:false},
-            { text: "Vi Phan", correct:false},
-            
+        question: "Tích phân ∫ cos(x) dx từ 0 đến π/2 là bao nhiêu?",
+        answers: [
+            { text: "1", correct: true },
+            { text: "0", correct: false },
+            { text: "π/2", correct: false },
+            { text: "2", correct: false }
         ]
     },
     {
-        question : "Bai Hoc Dau Tien",
-        image : "img/test1.png",
-        answers:[
-            { text: "Tich Phan", correct:false},
-            { text: "Nguyen Ham", correct:true},
-            { text: "Dao Ham", correct:false},
-            { text: "Vi Phan", correct:false},
-            
+        question: "Tích phân của hàm số f(x) = e^x từ 0 đến 1 là gì?",
+        answers: [
+            { text: "e - 1", correct: true },
+            { text: "e + 1", correct: false },
+            { text: "1", correct: false },
+            { text: "e", correct: false }
         ]
     },
-    
-    
+    {
+        question: "Tích phân ∫ 1/x dx từ 1 đến e là gì?",
+        answers: [
+            { text: "1", correct: false },
+            { text: "e", correct: false },
+            { text: "ln(e)", correct: true },
+            { text: "ln(e) - 1", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ sin(x) dx từ 0 đến π là bao nhiêu?",
+        answers: [
+            { text: "0", correct: false },
+            { text: "2", correct: true },
+            { text: "1", correct: false },
+            { text: "3", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân của ∫ 2x dx từ 1 đến 4 là gì?",
+        answers: [
+            { text: "14", correct: false },
+            { text: "12", correct: false },
+            { text: "16", correct: true },
+            { text: "18", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ x dx từ 2 đến 5 là gì?",
+        answers: [
+            { text: "8", correct: false },
+            { text: "10", correct: false },
+            { text: "12", correct: true },
+            { text: "14", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ (3x^2 - 2x + 1) dx từ 0 đến 1 là bao nhiêu?",
+        answers: [
+            { text: "2", correct: true },
+            { text: "1", correct: false },
+            { text: "1/3", correct: false },
+            { text: "3", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân của ∫ (2x + 3) dx từ 1 đến 2 là gì?",
+        answers: [
+            { text: "7", correct: true },
+            { text: "6", correct: false },
+            { text: "5", correct: false },
+            { text: "4", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ 1/x^2 dx từ 1 đến 2 là bao nhiêu?",
+        answers: [
+            { text: "1/2", correct: true },
+            { text: "1", correct: false },
+            { text: "2", correct: false },
+            { text: "1/3", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân của ∫ tan(x) dx từ 0 đến π/4 là bao nhiêu?",
+        answers: [
+            { text: "ln(2)", correct: true },
+            { text: "1", correct: false },
+            { text: "ln(3)", correct: false },
+            { text: "ln(4)", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ e^(2x) dx từ 0 đến 1 là bao nhiêu?",
+        answers: [
+            { text: "(e^2 - 1)/2", correct: true },
+            { text: "e^2 - 1", correct: false },
+            { text: "2e - 2", correct: false },
+            { text: "e^2 - e", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân của ∫ (x^2 + 1) dx từ -1 đến 1 là bao nhiêu?",
+        answers: [
+            { text: "2/3", correct: false },
+            { text: "2", correct: true },
+            { text: "4/3", correct: false },
+            { text: "4", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ sec^2(x) dx từ 0 đến π/4 là bao nhiêu?",
+        answers: [
+            { text: "1", correct: false },
+            { text: "π/4", correct: false },
+            { text: "ln(2)", correct: true },
+            { text: "2", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân của ∫ (x^3 - 3x^2 + 2x) dx từ 0 đến 2 là bao nhiêu?",
+        answers: [
+            { text: "0", correct: false },
+            { text: "2", correct: false },
+            { text: "4", correct: true },
+            { text: "6", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ x*sin(x) dx từ 0 đến π là gì?",
+        answers: [
+            { text: "0", correct: true },
+            { text: "2π", correct: false },
+            { text: "π/2", correct: false },
+            { text: "π", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ (e^x * cos(x)) dx từ 0 đến π/2 là bao nhiêu?",
+        answers: [
+            { text: "e^(π/2)", correct: false },
+            { text: "(e^(π/2) - 1)/2", correct: true },
+            { text: "1", correct: false },
+            { text: "(e^(π/2) + 1)/2", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ (ln(x)/x^2) dx từ 1 đến e là gì?",
+        answers: [
+            { text: "-1/e", correct: true },
+            { text: "-1", correct: false },
+            { text: "1", correct: false },
+            { text: "1/e", correct: false }
+        ]
+    },
+    {
+        question: "Tích phân ∫ (x^2 * e^x) dx từ 0 đến 1 là bao nhiêu?",
+        answers: [
+            { text: "e - 1", correct: false },
+            { text: "2e - 1", correct: true },
+            { text: "e + 1", correct: false },
+            { text: "2e + 1", correct: false }
+        ]
+    }
 ];
+
+
 
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
