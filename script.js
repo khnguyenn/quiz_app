@@ -50,24 +50,29 @@ const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 const questionImage = document.getElementById("question-image");
+const questionInfo = document.getElementById("question-info");
+const totalTimeElement = document.getElementById("total-time");
+const quizbox = document.querySelector(".app");
+const resultbox = document.querySelector(".result-box");
+const tryAgainButton = document.querySelector(".tryAgain-btn");
 
 let totalQuestions = questions.length;
 let currentQuestionIndex = 0;
 let score = 0;
 let timer; 
 let startTime;
+let totalTimeSpent;
 
 
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerHTML = "Next";
     startStopwatch();
+    questionInfo.style.display = "block"; 
     showQuestion();
 }
 
 function updateQuestionInfo() {
-    const questionInfo = document.getElementById("question-info");
     questionInfo.innerHTML = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
 }
 
@@ -79,10 +84,10 @@ function formatTime(seconds) {
 
 // Function to update the total time spent
 function updateTotalTime() {
-    const totalTimeElement = document.getElementById("total-time");
     if (startTime) {
         const elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Calculate elapsed time in seconds
         totalTimeElement.innerHTML = `Time spent: ${formatTime(elapsedTime)}`; // Update the display
+        totalTimeSpent = elapsedTime;
     }
 }
 
@@ -124,7 +129,6 @@ function showQuestion() {
 }
 
 function resetState() {
-    questionImage.style.display = "none";
     nextButton.style.display = "none";
     while(answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
@@ -153,23 +157,61 @@ function showScore(){
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
     nextButton.innerHTML = "Test Again";
     nextButton.style.display = "block";
-}
+}   
 
 function handleNextButton(){
     currentQuestionIndex++;
     if(currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
+        questionInfo.style.display = "none";
         stopStopwatch();
-        showScore();
+        showResultBox();
     }
 }
+
+function showResultBox() {
+    quizbox.classList.add('hidden');
+    resultbox.classList.add('active');
+
+    const scoreText = document.querySelector('.score-text');
+    const timeText = document.querySelector('.time-text');
+    scoreText.textContent = `You scored ${score} out of ${questions.length}!`;
+
+    const circularProgess = document.querySelector('.circular-progess');
+    const progessValue = document.querySelector('.progress-value');
+    
+    timeText.textContent = `Time Spent: ${formatTime(totalTimeSpent)}`;
+
+    let progessStartValue = -1;
+    let progessEndValue = (score/ questions.length) * 100;
+    let speed = 20;
+
+    let progess = setInterval(() => {
+        progessStartValue++;
+        // console.log(progessStartValue);
+        progessValue.textContent = `${progessStartValue}%`;
+        circularProgess.style.background = `conic-gradient(#001e4d ${progessStartValue * 3.6}deg,rgba(255, 255, 255, 0.114) 0deg)`;
+        if(progessStartValue == progessEndValue) {
+            clearInterval(progess);
+        }
+
+    }, speed);
+}
+
+
 
 nextButton.addEventListener("click", ()=> {
     if(currentQuestionIndex < questions.length) {
         handleNextButton();
-    } else {
-        startQuiz();
     }
 })
+
+tryAgainButton.onclick = () => {
+    resultbox.classList.remove('active');
+    quizbox.classList.remove('hidden');
+    startQuiz();
+}
+
+
 startQuiz();
