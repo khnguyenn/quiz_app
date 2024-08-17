@@ -21,8 +21,29 @@
                 <button class="btn">Answer 4</button>
             </div>
             <button id="next-btn">Next</button>
-            <button id="back-btn">Home Page</button>
+           <button id="back-btn"><a href="https://doublendyoh-normalman159s-projects.vercel.app/course_edited_tichphan">Home Page</a></button>
+            
         </div>
+    </div>
+    <div class="true-false-box">
+        <h1>True/False Quiz</h1>
+        <div id="truefalse-time">Time spent: 0:00</div>
+        <form id="quiz-form">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>True</th>
+                        <th>False</th>
+                    </tr>
+            </thead>
+            <tbody id="quiz-questions">
+                <!-- Questions will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <button id="submit-btn" type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
     </div>
     <div class="result-box">
         <h2>Quiz Result!</h2>
@@ -30,16 +51,22 @@
             <div class="circular-progess">
                 <span class="progress-value">0%</span>
             </div>
-
-            <span class="score-text">You Score</span>
-            <span class="time-text">Time Spent : </span>
-
+            <div class="circular-progess_1">
+                <span class="progress-value_1">0%</span>
+            </div>
         </div>
+        <div class="title-percent">
+            <span id="title-percent-1">MCQ</span>
+            <span id="title-percent-2">True/False</span>
+        </div>
+        <span class="score-text">You Score</span>
+        <span class="time-text">Time Spent : </span>
         <div class="buttons">
             <button class="tryAgain-btn">Try Again</button>
-            <button class="goHome-button">Go To Home</button>
+            <button class="goHome-button"><a href="https://doublendyoh-normalman159s-projects.vercel.app/">Go To Home</a></button>
         </div>
     </div>
     <script src="script.js"></script>
+    <!-- <script src="truefalse.js"></script>  -->
 </body>
 </html>
