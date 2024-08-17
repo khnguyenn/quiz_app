@@ -1,6 +1,7 @@
 const questions = [
     {
         question: "Tích phân của hàm số f(x) = 2x từ 0 đến 2 là gì?",
+        image:"",
         answers: [
             { text: "4", correct: true },
             { text: "2", correct: false },
@@ -10,7 +11,7 @@ const questions = [
     },
     {
         question: "Tính S",
-        image: "/img/test2.jpg",
+        image: "img/test2.jpg",
         answers: [
             { text: "S = 5", correct: false },
             { text: "S = 8", correct: false },
@@ -20,6 +21,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ cos(x) dx từ 0 đến π/2 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "1", correct: true },
             { text: "0", correct: false },
@@ -29,6 +31,7 @@ const questions = [
     },
     {
         question: "Tích phân của hàm số f(x) = e^x từ 0 đến 1 là gì?",
+        image:"",
         answers: [
             { text: "e - 1", correct: true },
             { text: "e + 1", correct: false },
@@ -38,6 +41,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ 1/x dx từ 1 đến e là gì?",
+        image:"",
         answers: [
             { text: "1", correct: false },
             { text: "e", correct: false },
@@ -47,6 +51,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ sin(x) dx từ 0 đến π là bao nhiêu?",
+        image:"",
         answers: [
             { text: "0", correct: false },
             { text: "2", correct: true },
@@ -56,6 +61,7 @@ const questions = [
     },
     {
         question: "Tích phân của ∫ 2x dx từ 1 đến 4 là gì?",
+        image:"",
         answers: [
             { text: "14", correct: false },
             { text: "12", correct: false },
@@ -65,7 +71,7 @@ const questions = [
     },
     {
         question: "Tìm giá trị của P",
-        image : "/img/test3.jpg",
+        image : "img/test3.jpg",
         answers: [
             { text: "P = -3", correct: false },
             { text: "P = 1", correct: false },
@@ -75,6 +81,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ (3x^2 - 2x + 1) dx từ 0 đến 1 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "2", correct: true },
             { text: "1", correct: false },
@@ -84,6 +91,7 @@ const questions = [
     },
     {
         question: "Tích phân của ∫ (2x + 3) dx từ 1 đến 2 là gì?",
+        image:"",
         answers: [
             { text: "7", correct: true },
             { text: "6", correct: false },
@@ -93,6 +101,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ 1/x^2 dx từ 1 đến 2 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "1/2", correct: true },
             { text: "1", correct: false },
@@ -102,6 +111,7 @@ const questions = [
     },
     {
         question: "Tích phân của ∫ tan(x) dx từ 0 đến π/4 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "ln(2)", correct: true },
             { text: "1", correct: false },
@@ -111,6 +121,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ e^(2x) dx từ 0 đến 1 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "(e^2 - 1)/2", correct: true },
             { text: "e^2 - 1", correct: false },
@@ -120,6 +131,7 @@ const questions = [
     },
     {
         question: "Tích phân của ∫ (x^2 + 1) dx từ -1 đến 1 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "2/3", correct: false },
             { text: "2", correct: true },
@@ -129,6 +141,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ sec^2(x) dx từ 0 đến π/4 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "1", correct: false },
             { text: "π/4", correct: false },
@@ -138,6 +151,7 @@ const questions = [
     },
     {
         question: "Tích phân của ∫ (x^3 - 3x^2 + 2x) dx từ 0 đến 2 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "0", correct: false },
             { text: "2", correct: false },
@@ -147,6 +161,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ x*sin(x) dx từ 0 đến π là gì?",
+        image:"",
         answers: [
             { text: "0", correct: true },
             { text: "2π", correct: false },
@@ -156,6 +171,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ (e^x * cos(x)) dx từ 0 đến π/2 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "e^(π/2)", correct: false },
             { text: "(e^(π/2) - 1)/2", correct: true },
@@ -165,6 +181,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ (ln(x)/x^2) dx từ 1 đến e là gì?",
+        image:"",
         answers: [
             { text: "-1/e", correct: true },
             { text: "-1", correct: false },
@@ -174,6 +191,7 @@ const questions = [
     },
     {
         question: "Tích phân ∫ (x^2 * e^x) dx từ 0 đến 1 là bao nhiêu?",
+        image:"",
         answers: [
             { text: "e - 1", correct: false },
             { text: "2e - 1", correct: true },
