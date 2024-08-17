@@ -9,12 +9,13 @@ const questions = [
         ]
     },
     {
-        question: "Tích phân ∫ x^2 dx từ 1 đến 3 là bao nhiêu?",
+        question: "Tính S",
+        image: "/img/test2.jpg",
         answers: [
-            { text: "26/3", correct: false },
-            { text: "9", correct: false },
-            { text: "28/3", correct: true },
-            { text: "10", correct: false }
+            { text: "S = 5", correct: false },
+            { text: "S = 8", correct: false },
+            { text: "S = 7", correct: true },
+            { text: "S = 11", correct: false }
         ]
     },
     {
@@ -63,12 +64,13 @@ const questions = [
         ]
     },
     {
-        question: "Tích phân ∫ x dx từ 2 đến 5 là gì?",
+        question: "Tìm giá trị của P",
+        image : "/img/test3.jpg",
         answers: [
-            { text: "8", correct: false },
-            { text: "10", correct: false },
-            { text: "12", correct: true },
-            { text: "14", correct: false }
+            { text: "P = -3", correct: false },
+            { text: "P = 1", correct: false },
+            { text: "P = -2", correct: true },
+            { text: "P = -1", correct: false }
         ]
     },
     {
@@ -181,7 +183,24 @@ const questions = [
     }
 ];
 
-
+const quizData = [
+    {
+        question: "∫ 1/x dx = ln(x) + C",
+        correctAnswer: "false",
+    },
+    {
+        question: "∫ 1/(cos^2(x) dx = tanx + C",
+        correctAnswer: "true",
+    },
+    {
+        question: "∫ sin(x)dx = -cos(x) + C",
+        correctAnswer: "true",
+    },
+    {
+        question: "∫ e^x dx = e^x + C",
+        correctAnswer: "true",
+    }
+];
 
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
@@ -192,6 +211,8 @@ const totalTimeElement = document.getElementById("total-time");
 const quizbox = document.querySelector(".app");
 const resultbox = document.querySelector(".result-box");
 const tryAgainButton = document.querySelector(".tryAgain-btn");
+const truefalsebox = document.querySelector(".true-false-box");
+const truefalseTimeElement = document.getElementById('truefalse-time');
 
 let totalQuestions = questions.length;
 let currentQuestionIndex = 0;
@@ -202,6 +223,7 @@ let totalTimeSpent;
 
 
 function startQuiz() {
+    scoretf = 0;
     currentQuestionIndex = 0;
     score = 0;
     startStopwatch();
@@ -223,7 +245,15 @@ function formatTime(seconds) {
 function updateTotalTime() {
     if (startTime) {
         const elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Calculate elapsed time in seconds
-        totalTimeElement.innerHTML = `Time spent: ${formatTime(elapsedTime)}`; // Update the display
+        const formattedTime = formatTime(elapsedTime);
+
+        totalTimeElement.innerHTML = `Time spent: ${formattedTime}`;// Update the display
+
+        const truefalseTimeElement = document.getElementById('truefalse-time');
+        if (truefalseTimeElement) {
+            truefalseTimeElement.innerHTML = `Time spent: ${formattedTime}`;
+        }
+
         totalTimeSpent = elapsedTime;
     }
 }
@@ -302,18 +332,19 @@ function handleNextButton(){
         showQuestion();
     } else {
         questionInfo.style.display = "none";
-        stopStopwatch();
-        showResultBox();
+        // stopStopwatch();
+        // showResultBox();
+        showTrueFalse();
     }
 }
 
 function showResultBox() {
-    quizbox.classList.add('hidden');
+    truefalsebox.classList.remove('active');
     resultbox.classList.add('active');
 
     const scoreText = document.querySelector('.score-text');
     const timeText = document.querySelector('.time-text');
-    scoreText.textContent = `You scored ${score} out of ${questions.length}!`;
+    scoreText.textContent = `You scored ${score + scoretf} out of ${questions.length + quizData.length}!`;
 
     const circularProgess = document.querySelector('.circular-progess');
     const progessValue = document.querySelector('.progress-value');
@@ -334,6 +365,34 @@ function showResultBox() {
         }
 
     }, speed);
+
+    const circularProgess1 = document.querySelector('.circular-progess_1');
+    const progessValue1 = document.querySelector('.progress-value_1');
+    
+
+    let progessStartValue1 = -1;
+    let progessEndValue1 = (scoretf/ quizData.length) * 100;
+    let speed1 = 20;
+
+    let progess1 = setInterval(() => {
+        progessStartValue1++;
+        // console.log(progessStartValue);
+        progessValue1.textContent = `${progessStartValue1}%`;
+        circularProgess1.style.background = `conic-gradient(#001e4d ${progessStartValue1 * 3.6}deg,rgba(255, 255, 255, 0.114) 0deg)`;
+        if(progessStartValue1 == progessEndValue1) {
+            clearInterval(progess1);
+        }
+
+    }, speed1);
+}
+
+
+
+function showTrueFalse() {
+    quizbox.classList.add('hidden');
+    truefalsebox.classList.add('active');
+    loadQuiz(); 
+    updateTotalTime();
 }
 
 
@@ -341,7 +400,7 @@ function showResultBox() {
 nextButton.addEventListener("click", ()=> {
     if(currentQuestionIndex < questions.length) {
         handleNextButton();
-    }
+    } 
 })
 
 tryAgainButton.onclick = () => {
@@ -349,6 +408,44 @@ tryAgainButton.onclick = () => {
     quizbox.classList.remove('hidden');
     startQuiz();
 }
+
+function loadQuiz() {
+    const quizQuestionsContainer = document.getElementById('quiz-questions');
+    quizQuestionsContainer.innerHTML = ''; // Clear any existing content
+
+    quizData.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.question}</td>
+            <td><input type="radio" name="q${index}" value="true"></td>
+            <td><input type="radio" name="q${index}" value="false"></td>
+        `;
+        quizQuestionsContainer.appendChild(row);
+    });
+}
+
+let scoretf = 0;
+
+
+function checkAnswers(event) {
+    event.preventDefault();
+
+    quizData.forEach((item, index) => {
+        const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+        
+        if (selectedAnswer && selectedAnswer.value === item.correctAnswer) {
+            scoretf++;
+        }
+    });
+    showResultBox();
+
+    // const resultContainer = document.getElementById('result');
+    // resultContainer.textContent = `You scored ${scoretf} out of ${quizData.length}.`;
+}
+
+
+const submitBtn = document.getElementById("submit-btn");
+submitBtn.addEventListener("click", checkAnswers);
 
 
 startQuiz();
